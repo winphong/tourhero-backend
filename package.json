@@ -7,13 +7,14 @@
     "tsc": "tsc",
     "tsc:migration": "tsc --project src/db/migrations/tsconfig.json",
     "db:migration:create": "sequelize-cli migration:generate --migrations-path src/db/migrations --name",
-    "db:migrate": "bun run tsc:migration && sequelize-cli db:migrate",
+    "db:migrate": "tsc && bun run tsc:migration && sequelize-cli db:migrate",
     "db:rollback": "bun run tsc:migration && sequelize-cli db:migrate:undo"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22.13.10",
     "@types/validator": "^13.12.2",
     "sequelize-cli": "^6.6.2"
@@ -25,6 +26,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "lodash": "^4.17.21",
     "pg": "^8.14.0",
     "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.6",

@@ -4,7 +4,7 @@
     "module": "CommonJs",
     "moduleResolution": "node",
     "verbatimModuleSyntax": false,
-    "outDir": "../../../dist/src/db/migrations",
+    "outDir": "../../../dist/db/migrations",
     "resolveJsonModule": true
   },
   "include": [".", "./package.json"]

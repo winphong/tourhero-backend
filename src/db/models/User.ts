@@ -1,7 +1,9 @@
 import {
+  BelongsToMany,
   Column,
   CreatedAt,
   DataType,
+  HasMany,
   Model,
   NotNull,
   PrimaryKey,
@@ -16,22 +18,18 @@ import {
 })
 class User extends Model {
   @PrimaryKey
-  @Column({
-    defaultValue: DataType.UUIDV4,
-  })
+  @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4 })
   declare id: string;
 
-  @NotNull
+  @Column({ type: DataType.STRING, allowNull: false })
   declare firstName: string;
 
-  @NotNull
+  @Column({ type: DataType.STRING, allowNull: false })
   declare lastName: string;
 
-  @NotNull
-  @Unique
+  @Column({ type: DataType.STRING, allowNull: false, unique: true })
   declare email: string;
 
-  @NotNull
   @CreatedAt
   declare createdAt: Date;
 
