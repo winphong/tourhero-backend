@@ -6,7 +6,9 @@ import {
   CreatedAt,
   UpdatedAt,
   PrimaryKey,
+  HasMany,
 } from "sequelize-typescript";
+import Trip from "./Trip";
 
 @Table({
   tableName: "Tours",
@@ -31,6 +33,9 @@ class Tour extends Model {
 
   @Column({ type: DataType.STRING, allowNull: false })
   declare country: string;
+
+  @HasMany(() => Trip)
+  declare trips: Trip[];
 
   @CreatedAt
   declare createdAt: Date;

@@ -9,10 +9,6 @@ import TripAddon from "./models/TripAddon";
 import AddOnUtilization from "./models/AddOnUtilization";
 
 export const connectDb = async () => {
-  if (!process.env.PG_CONNECTION_STRING) {
-    throw new Error("Database connection is missing");
-  }
-
   const sequelize = new Sequelize({
     dialect: "postgres",
     database: process.env.DEV_PG_DB,

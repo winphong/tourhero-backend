@@ -32,10 +32,10 @@ class AddOnUtilization extends Model {
 
   @ForeignKey(() => TripAddon)
   @Column({ type: DataType.UUID, allowNull: false })
-  declare addOnId: string;
+  declare tripAddOnId: string;
 
   @BelongsTo(() => TripAddon)
-  declare AddOn: TripAddon;
+  declare TripAddOn: TripAddon;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.UUID, allowNull: false })

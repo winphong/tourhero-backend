@@ -11,6 +11,12 @@ import {
 } from "sequelize-typescript";
 import Trip from "./Trip";
 
+export enum TripAddOnType {
+  UNLIMITED = "UNLIMITED",
+  TIME_BASED = "TIME_BASED",
+  NUMBER_BASED = "NUMBER_BASED",
+}
+
 @Table({
   tableName: "TripAddOns",
   timestamps: false,
@@ -26,8 +32,16 @@ class TripAddon extends Model {
   @Column({ type: DataType.STRING, allowNull: false })
   declare description: string;
 
-  @Column({ type: DataType.STRING, allowNull: false })
-  declare type: string; // UNLIMITED / TIME_BASED / NUMBER_BASED
+  @Column({
+    type: DataType.ENUM,
+    allowNull: false,
+    values: [
+      TripAddOnType.NUMBER_BASED,
+      TripAddOnType.TIME_BASED,
+      TripAddOnType.UNLIMITED,
+    ],
+  })
+  declare type: TripAddOnType;
 
   @Column({ type: DataType.STRING, allowNull: true })
   declare startTime: string | null;

@@ -43,7 +43,7 @@ class Trip extends Model {
   declare tourId: string;
 
   @BelongsTo(() => Tour)
-  declare tour: Tour;
+  declare Tour: Tour;
 
   @CreatedAt
   declare createdAt: Date;

@@ -52,34 +52,34 @@ const tours = [
 const trips = [
   {
     id: v4(),
-    description: "Baguette tea time with coffee",
+    description: "Texas Kentucky",
     startDate: "2025-07-01",
     endDate: "2025-07-06",
     numOfDays: 5,
     numOfNights: 4,
-    currency: "EUR",
+    currency: "USD",
     tourId: tours[0].id,
     createdAt: new Date().toISOString(),
   },
   {
     id: v4(),
-    description: "Baguette tea time with coffee",
+    description: "Michingan Lake!",
     startDate: "2025-08-15",
     endDate: "2025-08-22",
     numOfDays: 7,
     numOfNights: 6,
-    currency: "EUR",
+    currency: "USD",
     tourId: tours[0].id,
     createdAt: new Date().toISOString(),
   },
   {
     id: v4(),
-    description: "Sushi Escape",
+    description: "Times Square",
     startDate: "2025-09-10",
     endDate: "2025-09-15",
     numOfDays: 5,
     numOfNights: 4,
-    currency: "JPY",
+    currency: "USD",
     tourId: tours[1].id,
     createdAt: new Date().toISOString(),
   },
@@ -105,7 +105,7 @@ const addOnTemplates = [
     startTime: null,
     endTime: null,
     priceInCents: 10000,
-    limit: 5,
+    limit: 1,
     createdAt: new Date().toISOString(),
   },
   {
@@ -116,7 +116,18 @@ const addOnTemplates = [
     startTime: "14:00",
     endTime: "15:00",
     priceInCents: 5000,
-    limit: null,
+    limit: 1,
+    createdAt: new Date().toISOString(),
+  },
+  {
+    id: v4(),
+    name: "City Tour 12-6 PM",
+    description: "Half day tour",
+    type: "TIME_BASED",
+    startTime: "12:00",
+    endTime: "18:00",
+    priceInCents: 5000,
+    limit: 1,
     createdAt: new Date().toISOString(),
   },
 ];
@@ -142,8 +153,8 @@ module.exports = {
             id: v4(),
             tripId: trips[0].id,
             userId: users[0].id,
-            userRole: "HOST",
-            priceAtBookingInCents: 50000,
+            userRole: "GUEST",
+            priceAtBookingInCents: null,
             bookingStatus: "PENDING",
             createdAt: new Date().toISOString(),
           },
@@ -151,8 +162,8 @@ module.exports = {
             id: v4(),
             tripId: trips[1].id,
             userId: users[0].id,
-            userRole: "HOST",
-            priceAtBookingInCents: 70000,
+            userRole: "GUEST",
+            priceAtBookingInCents: null,
             bookingStatus: "PENDING",
             createdAt: new Date().toISOString(),
           },
@@ -160,8 +171,8 @@ module.exports = {
             id: v4(),
             tripId: trips[2].id,
             userId: users[0].id,
-            userRole: "HOST",
-            priceAtBookingInCents: 60000,
+            userRole: "GUEST",
+            priceAtBookingInCents: null,
             bookingStatus: "PENDING",
             createdAt: new Date().toISOString(),
           },
@@ -170,7 +181,7 @@ module.exports = {
             tripId: trips[0].id,
             userId: users[1].id,
             userRole: "GUEST",
-            priceAtBookingInCents: 50000,
+            priceAtBookingInCents: null,
             bookingStatus: "PENDING",
             createdAt: new Date().toISOString(),
           },
@@ -179,7 +190,34 @@ module.exports = {
             tripId: trips[1].id,
             userId: users[1].id,
             userRole: "GUEST",
-            priceAtBookingInCents: 70000,
+            priceAtBookingInCents: null,
+            bookingStatus: "PENDING",
+            createdAt: new Date().toISOString(),
+          },
+          {
+            id: v4(),
+            tripId: trips[0].id,
+            userId: users[2].id,
+            userRole: "GUEST",
+            priceAtBookingInCents: null,
+            bookingStatus: "PENDING",
+            createdAt: new Date().toISOString(),
+          },
+          {
+            id: v4(),
+            tripId: trips[1].id,
+            userId: users[2].id,
+            userRole: "GUEST",
+            priceAtBookingInCents: null,
+            bookingStatus: "PENDING",
+            createdAt: new Date().toISOString(),
+          },
+          {
+            id: v4(),
+            tripId: trips[2].id,
+            userId: users[1].id,
+            userRole: "GUEST",
+            priceAtBookingInCents: null,
             bookingStatus: "PENDING",
             createdAt: new Date().toISOString(),
           },
@@ -188,7 +226,7 @@ module.exports = {
             tripId: trips[2].id,
             userId: users[2].id,
             userRole: "GUEST",
-            priceAtBookingInCents: 60000,
+            priceAtBookingInCents: null,
             bookingStatus: "PENDING",
             createdAt: new Date().toISOString(),
           },
@@ -200,36 +238,21 @@ module.exports = {
         transaction,
       });
 
-      await queryInterface.bulkInsert(
-        "TripAddOns",
-        [
-          {
-            id: v4(),
-            tripId: trips[0].id,
-            ..._.omit(addOnTemplates[0], ["id", "createdAt"]),
-            createdAt: new Date().toISOString(),
-          },
-          {
-            id: v4(),
-            tripId: trips[0].id,
-            ..._.omit(addOnTemplates[1], ["id", "createdAt"]),
-            createdAt: new Date().toISOString(),
-          },
-          {
-            id: v4(),
-            tripId: trips[1].id,
-            ..._.omit(addOnTemplates[2], ["id", "createdAt"]),
-            createdAt: new Date().toISOString(),
-          },
-          {
-            id: v4(),
-            tripId: trips[2].id,
-            ..._.omit(addOnTemplates[1], ["id", "createdAt"]),
-            createdAt: new Date().toISOString(),
-          },
-        ],
-        { transaction }
+      const tripAddOns = _.flatten(
+        trips.map((trip) => {
+          return addOnTemplates.map((template) => {
+            return {
+              id: v4(),
+              tripId: trip.id,
+              ..._.omit(template, ["id", "createdAt"]),
+              createdAt: new Date().toISOString(),
+            };
+          });
+        })
       );
+      await queryInterface.bulkInsert("TripAddOns", tripAddOns, {
+        transaction,
+      });
     });
   },
 

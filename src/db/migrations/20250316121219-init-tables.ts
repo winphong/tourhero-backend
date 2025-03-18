@@ -207,7 +207,7 @@ module.exports = {
             type: DataType.UUID,
             references: { model: "Trips", key: "id" },
           },
-          addOnId: {
+          tripAddOnId: {
             allowNull: false,
             type: DataType.UUID,
             references: { model: "TripAddOns", key: "id" },
