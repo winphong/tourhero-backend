@@ -19,7 +19,14 @@ const initDbConnection = async () => {
 initDbConnection();
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(
+  cors({
+    origin:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:5173"
+        : "https://tourhero-frontend.vercel.app",
+  })
+);
 
 // Health Check
 app.get("/ping", (req: any, res: any) => {
