@@ -9,10 +9,14 @@ module.exports = {
     username: process.env.DEV_PG_USER,
     password: process.env.DEV_PG_PASSWORD,
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
+      ...(process.env.NODE_ENV !== "development"
+        ? {
+            ssl: {
+              require: true,
+              rejectUnauthorized: false,
+            },
+          }
+        : {}),
     },
   },
   test: {
