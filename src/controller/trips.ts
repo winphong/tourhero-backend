@@ -1,13 +1,5 @@
 import { Router } from "express";
-import AddOnUtilization from "../db/models/AddOnUtilization";
-import Trip from "../db/models/Trip";
-import TripGuest, { UserRole } from "../db/models/TripGuest";
-import User from "../db/models/User";
-import TripAddon from "../db/models/TripAddon";
-import AddOnTemplate from "../db/models/AddOnTemplate";
-import Tour from "../db/models/Tour";
-import { Op } from "sequelize";
-import { TripService } from "../services/TripService";
+import { TripService } from "../services/TripService.js";
 
 const router = Router();
 

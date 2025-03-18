@@ -1,11 +1,10 @@
 import { Op, type Transaction } from "sequelize";
-import transaction from "sequelize/lib/transaction";
-import AddOnUtilization from "../db/models/AddOnUtilization";
-import TripAddon from "../db/models/TripAddon";
-import TripGuest, { BookingStatus } from "../db/models/TripGuest";
-import Tour from "../db/models/Tour";
-import Trip from "../db/models/Trip";
-import { UtilityService } from "./UtilityService";
+import AddOnUtilization from "../db/models/AddOnUtilization.js";
+import TripAddon from "../db/models/TripAddon.js";
+import TripGuest, { BookingStatus } from "../db/models/TripGuest.js";
+import Tour from "../db/models/Tour.js";
+import Trip from "../db/models/Trip.js";
+import { UtilityService } from "./UtilityService.js";
 
 export class CheckoutService {
   static create = async ({

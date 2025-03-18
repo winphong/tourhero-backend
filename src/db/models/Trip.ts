@@ -9,7 +9,7 @@ import {
   UpdatedAt,
   PrimaryKey,
 } from "sequelize-typescript";
-import Tour from "./Tour";
+import Tour from "./Tour.js";
 
 @Table({
   tableName: "Trips",

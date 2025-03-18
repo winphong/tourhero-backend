@@ -1,4 +1,4 @@
-import type TripAddon from "../db/models/TripAddon";
+import type TripAddon from "../db/models/TripAddon.js";
 
 export class UtilityService {
   static hasClashingAddOns = (tripAddOn: TripAddon[]): boolean => {

@@ -1,5 +1,5 @@
-import { UtilityService } from "./UtilityService";
-import type TripAddon from "../db/models/TripAddon";
+import { UtilityService } from "./UtilityService.js";
+import type TripAddon from "../db/models/TripAddon.js";
 import { expect, describe, it } from "bun:test";
 
 describe("UtilityService", () => {

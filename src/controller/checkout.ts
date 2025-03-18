@@ -1,8 +1,8 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
 
-import Tour from "../db/models/Tour";
-import { CheckoutService } from "../services/CheckoutService";
+import Tour from "../db/models/Tour.js";
+import { CheckoutService } from "../services/CheckoutService.js";
 
 const router = Router();
 

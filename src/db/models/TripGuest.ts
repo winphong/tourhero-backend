@@ -9,8 +9,8 @@ import {
   PrimaryKey,
   UpdatedAt,
 } from "sequelize-typescript";
-import Trip from "./Trip";
-import User from "./User";
+import Trip from "./Trip.js";
+import User from "./User.js";
 
 export enum UserRole {
   GUEST = "GUEST",

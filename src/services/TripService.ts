@@ -1,10 +1,8 @@
-import { col, fn, literal, Op, where } from "sequelize";
-import AddOnUtilization from "../db/models/AddOnUtilization";
-import Trip from "../db/models/Trip";
-import TripAddon, { TripAddOnType } from "../db/models/TripAddon";
-import TripGuest, { UserRole } from "../db/models/TripGuest";
-import Tour from "../db/models/Tour";
-import { AddOnUtilizationRepo } from "../repository/AddOnUtilizationRepo";
+import AddOnUtilization from "../db/models/AddOnUtilization.js";
+import Trip from "../db/models/Trip.js";
+import TripGuest, { UserRole } from "../db/models/TripGuest.js";
+import Tour from "../db/models/Tour.js";
+import { AddOnUtilizationRepo } from "../repository/AddOnUtilizationRepo.js";
 import _ from "lodash";
 
 export class TripService {

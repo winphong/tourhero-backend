@@ -8,10 +8,9 @@ import {
   PrimaryKey,
   CreatedAt,
 } from "sequelize-typescript";
-import AddOnTemplate from "./AddOnTemplate";
-import User from "./User";
-import Trip from "./Trip";
-import TripAddon from "./TripAddon";
+import User from "./User.js";
+import Trip from "./Trip.js";
+import TripAddon from "./TripAddon.js";
 
 @Table({
   tableName: "AddOnUtilizations",

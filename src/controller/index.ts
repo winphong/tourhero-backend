@@ -1,6 +1,6 @@
 import { Router } from "express";
-import trips from "./trips";
-import checkout from "./checkout";
+import trips from "./trips.js";
+import checkout from "./checkout.js";
 
 const router = Router();
 

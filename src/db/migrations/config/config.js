@@ -8,6 +8,12 @@ module.exports = {
     database: process.env.DEV_PG_DB,
     username: process.env.DEV_PG_USER,
     password: process.env.DEV_PG_PASSWORD,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
   },
   test: {
     dialect: "postgres",

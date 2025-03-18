@@ -9,7 +9,7 @@ import {
   CreatedAt,
   UpdatedAt,
 } from "sequelize-typescript";
-import Trip from "./Trip";
+import Trip from "./Trip.js";
 
 export enum TripAddOnType {
   UNLIMITED = "UNLIMITED",

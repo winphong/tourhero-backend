@@ -1,10 +1,10 @@
-import AddOnTemplate from "./AddOnTemplate";
-import AddOnUtilization from "./AddOnUtilization";
-import Tour from "./Tour";
-import TripAddon from "./TripAddon";
-import Trip from "./Trip";
-import TripGuest from "./TripGuest";
-import User from "./User";
+import AddOnTemplate from "./AddOnTemplate.js";
+import AddOnUtilization from "./AddOnUtilization.js";
+import Tour from "./Tour.js";
+import TripAddon from "./TripAddon.js";
+import Trip from "./Trip.js";
+import TripGuest from "./TripGuest.js";
+import User from "./User.js";
 
 export default {
   User,

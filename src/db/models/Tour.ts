@@ -8,7 +8,7 @@ import {
   PrimaryKey,
   HasMany,
 } from "sequelize-typescript";
-import Trip from "./Trip";
+import Trip from "./Trip.js";
 
 @Table({
   tableName: "Tours",

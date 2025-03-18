@@ -1,12 +1,12 @@
 import { Sequelize } from "sequelize-typescript";
-import models from "./models";
-import User from "./models/User";
-import Trip from "./models/Trip";
-import Tour from "./models/Tour";
-import AddOnTemplate from "./models/AddOnTemplate";
-import TripGuest from "./models/TripGuest";
-import TripAddon from "./models/TripAddon";
-import AddOnUtilization from "./models/AddOnUtilization";
+import User from "./models/User.js";
+import Trip from "./models/Trip.js";
+import Tour from "./models/Tour.js";
+import AddOnTemplate from "./models/AddOnTemplate.js";
+import TripGuest from "./models/TripGuest.js";
+import TripAddon from "./models/TripAddon.js";
+import AddOnUtilization from "./models/AddOnUtilization.js";
+import pg from "pg";
 
 export const connectDb = async () => {
   const sequelize = new Sequelize({
@@ -24,6 +24,17 @@ export const connectDb = async () => {
       TripAddon,
       AddOnUtilization,
     ],
+    dialectModule: pg,
+    dialectOptions: {
+      ...(process.env.NODE_ENV !== "development"
+        ? {
+            ssl: {
+              require: true,
+              rejectUnauthorized: false,
+            },
+          }
+        : {}),
+    },
   });
 
   try {

@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { literal, Op, where } from "sequelize";
-import AddOnUtilization from "../db/models/AddOnUtilization";
-import TripAddon, { TripAddOnType } from "../db/models/TripAddon";
+import AddOnUtilization from "../db/models/AddOnUtilization.js";
+import TripAddon, { TripAddOnType } from "../db/models/TripAddon.js";
 
 export class AddOnUtilizationRepo {
   /**
