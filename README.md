@@ -56,6 +56,7 @@ Backend: https://tourhero-backend.vercel.app/api/
 - Indexes on many-to-many relationship tables (e.g., unique index on AddOnUtilization User-TripAddon to prevent one user from purchasing the same add on for the same trip multiple times).
 - Enum tables for the statuses/record types in the respective tables instead of just plain strings.
 - Error boundary for on both the root of frontend project as well as each component (e.g. error on addons component shouldn't affect the checkout/payment flow)
+- Form state management on Frontend could be better. Currently there's a lot of passing of information from parent->child and emitting of event from child->parent
 - AddOnUtilization can potentially store numbers (e.g., multiple addons for a sim card).
 
 ## Setting Up Locally for Development
