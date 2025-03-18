@@ -9,7 +9,7 @@ const port = 3000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://tourhero-frontend.vercel.app/"],
+    origin: ["http://localhost:5173", "https://tourhero-frontend.vercel.app"],
   })
 );
 app.use("/api", apiRoutes);
